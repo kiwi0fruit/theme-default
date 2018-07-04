@@ -93,7 +93,7 @@ function getElementTopPosition(id) {
 
     // Note: this could be a while loop, but to avoid any chances of infinite loops
     // we'll limit the max iterations to 10
-    var MAX_ITERATIONS = 10;
+    var MAX_ITERATIONS = 100;
     for (var i = 0; i < MAX_ITERATIONS; i++) {
         // Stop when we find the element's ancestor just below $container
         // or if we hit the top of the dom (parent's parent is itself)

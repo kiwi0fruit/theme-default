@@ -28,4 +28,4 @@ node_modules
 *.swp
 
 # _assets
-./package-lock.json
+package-lock.json

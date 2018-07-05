@@ -24,7 +24,7 @@
   "scripts": {
     "prepublish": "run-script-os",
     "prepublish:win32": "src\\build.sh",
-    "prepublish:darwin:freebsd:linux:sunos": "bash ./src/build.sh",
+    "prepublish:darwin:freebsd:linux:sunos": "bash ./src/build.sh"
   },
   "repository": {
     "type": "git",

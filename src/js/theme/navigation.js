@@ -232,7 +232,11 @@ function handleNavigation(relativeUrl, push) {
     // Is it an absolute url
     var isAbsolute = Boolean(uriParsed.hostname);
 
-    if (!usePushState || isAbsolute) {
+    // github.com/GitbookIO/theme-default/pull/62
+    // Is it a HTML file rather than an asset file (image, etc.)
+    var isHtml = /\.html$/.test(uriParsed.pathname);
+
+    if (!usePushState || isAbsolute || !isHtml) {
         // Refresh the page to the new URL if pushState not supported
         location.href = relativeUrl;
         return;
@@ -323,6 +327,10 @@ function handleNavigation(relativeUrl, push) {
                 }
 
                 deferred.resolve();
+            },
+            // github.com/GitbookIO/theme-default/pull/57
+            error: function(html, status, error) {
+                deferred.reject();
             }
         });
     }).promise();
@@ -331,7 +339,7 @@ function handleNavigation(relativeUrl, push) {
         promise
         .fail(function (e) {
             console.log(e); // eslint-disable-line no-console
-            // location.href = relativeUrl;
+            location.href = relativeUrl;
         })
     );
 }

@@ -1,5 +1,10 @@
 #! /bin/bash
 
+cd node_modules/.bin
+PATH="$PWD:$PATH"
+cd ..
+cd ..
+
 # Cleanup folder
 rm -rf _assets
 
